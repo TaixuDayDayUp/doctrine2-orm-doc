@@ -34,16 +34,15 @@ namespace Doctrine\ORM;
 class Version
 {
     /**
-     * Current Doctrine Version
+     * 当前 Doctrine 版本
      */
     const VERSION = '2.2.3-DEV';
 
     /**
-     * Compares a Doctrine version with the current one.
+     * 将一个Doctrine版本与当前版本进行比较。
      *
-     * @param string $version Doctrine version to compare.
-     * @return int Returns -1 if older, 0 if it is the same, 1 if version
-     *             passed as argument is newer.
+     * @param string $version 用于比较的Doctrine版本
+     * @return int Returns  如果较当前版本老返回-1, 如果相同返回0,  如果通过参数传递进的版本较新返回1.
      */
     public static function compare($version)
     {
