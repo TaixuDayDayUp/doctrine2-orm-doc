@@ -20,7 +20,7 @@
 namespace Doctrine\ORM;
 
 /**
- * Class to store and retrieve the version of Doctrine
+ * 保存和获取Doctrine版本的类
  *
  * @license http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link    www.doctrine-project.org
