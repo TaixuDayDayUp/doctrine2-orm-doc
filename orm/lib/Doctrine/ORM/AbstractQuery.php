@@ -25,7 +25,7 @@ use Doctrine\DBAL\Types\Type,
     Doctrine\ORM\Internal\Hydration\CacheHydrator;
 
 /**
- * Base contract for ORM queries. Base class for Query and NativeQuery.
+ * ORM 查询的基础契约 。查询和本地查询的基类
  *
  * @license http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link    www.doctrine-project.org
@@ -38,26 +38,26 @@ use Doctrine\DBAL\Types\Type,
  */
 abstract class AbstractQuery
 {
-    /* Hydration mode constants */
+    /* 混合模式常数 */
     /**
-     * Hydrates an object graph. This is the default behavior.
+     * 混合一个对象映射，这是默认的行为。
      */
     const HYDRATE_OBJECT = 1;
     /**
-     * Hydrates an array graph.
+     * 混合一个数组映射。
      */
     const HYDRATE_ARRAY = 2;
     /**
-     * Hydrates a flat, rectangular result set with scalar values.
+     * 使用标量值混合一个平面，矩形的结果集
      */
     const HYDRATE_SCALAR = 3;
     /**
-     * Hydrates a single scalar value.
+     * 混合一个简单的标量值。
      */
     const HYDRATE_SINGLE_SCALAR = 4;
 
     /**
-     * Very simple object hydrator (optimized for performance).
+     * 十分简单的对象混合 (优化表现).
      */
     const HYDRATE_SIMPLEOBJECT = 5;
 
