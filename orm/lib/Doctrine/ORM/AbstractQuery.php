@@ -62,32 +62,32 @@ abstract class AbstractQuery
     const HYDRATE_SIMPLEOBJECT = 5;
 
     /**
-     * @var array The parameter map of this query.
+     * @var array 映射此查询的参数.
      */
     protected $_params = array();
 
     /**
-     * @var array The parameter type map of this query.
+     * @var array 映射此查询的参数类型.
      */
     protected $_paramTypes = array();
 
     /**
-     * @var ResultSetMapping The user-specified ResultSetMapping to use.
+     * @var ResultSetMapping 用户指定使用的结果集映射
      */
     protected $_resultSetMapping;
 
     /**
-     * @var \Doctrine\ORM\EntityManager The entity manager used by this query object.
+     * @var \Doctrine\ORM\EntityManager 此查询对象使用的实体管理器。
      */
     protected $_em;
 
     /**
-     * @var array The map of query hints.
+     * @var array 查询提示映射.
      */
     protected $_hints = array();
 
     /**
-     * @var integer The hydration mode.
+     * @var integer 混合模式。
      */
     protected $_hydrationMode = self::HYDRATE_OBJECT;
 
@@ -97,7 +97,7 @@ abstract class AbstractQuery
     protected $_queryCacheProfile;
 
     /**
-     * @var boolean Boolean value that indicates whether or not expire the result cache.
+     * @var boolean 描述结果缓存是否过期的布尔值。
      */
     protected $_expireResultCache = false;
 
@@ -107,7 +107,7 @@ abstract class AbstractQuery
     protected $_hydrationCacheProfile;
 
     /**
-     * Initializes a new instance of a class derived from <tt>AbstractQuery</tt>.
+     * 初始化一个起源于<tt>AbstractQuery</tt>类的新实例
      *
      * @param \Doctrine\ORM\EntityManager $entityManager
      */
@@ -117,7 +117,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Retrieves the associated EntityManager of this Query instance.
+     * 获取此查询实例相关联的实体管理器
      *
      * @return \Doctrine\ORM\EntityManager
      */
@@ -127,11 +127,11 @@ abstract class AbstractQuery
     }
 
     /**
-     * Frees the resources used by the query object.
+     * 使用查询对象释放资源。
      *
-     * Resets Parameters, Parameter Types and Query Hints.
+     * 重置参数，参数类型和查询提示
      *
-     * @return void
+     * @return void 空
      */
     public function free()
     {
@@ -141,9 +141,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Get all defined parameters.
+     * 获取所有定义的参数。
      *
-     * @return array The defined query parameters.
+     * @return array 已定义的查询参数。
      */
     public function getParameters()
     {
@@ -151,9 +151,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Get all defined parameter types.
+     * 获取所有定义的参数类型。
      *
-     * @return array The defined query parameter types.
+     * @return array 已定义的查询参数类型。
      */
     public function getParameterTypes()
     {
@@ -161,10 +161,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets a query parameter.
+     * 得到一个查询参数。
      *
-     * @param mixed $key The key (index or name) of the bound parameter.
-     * @return mixed The value of the bound parameter.
+     * @param mixed $key 绑定参数的键(索引或者名字)。
+     * @return mixed 绑定参数的值。
      */
     public function getParameter($key)
     {
@@ -176,10 +176,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets a query parameter type.
+     * 得到一个查询参数类型。
      *
-     * @param mixed $key The key (index or name) of the bound parameter.
-     * @return mixed The parameter type of the bound parameter.
+     * @param mixed $key 绑定参数的键(索引或者名字)。
+     * @return mixed 绑定参数的参数类型。
      */
     public function getParameterType($key)
     {
@@ -191,23 +191,21 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the SQL query that corresponds to this query object.
-     * The returned SQL syntax depends on the connection driver that is used
-     * by this query object at the time of this method call.
+     * 得到和查询对象一致SQL查询语句。
+     * 返回的SQL句法依赖于当此方法被调用时被使用的查询对象的连接驱动。
      *
-     * @return string SQL query
+     * @return string SQL查询
      */
     abstract public function getSQL();
 
     /**
-     * Sets a query parameter.
+     * 一个查询参数的集合
      *
-     * @param string|integer $key The parameter position or name.
-     * @param mixed $value The parameter value.
-     * @param string $type The parameter type. If specified, the given value will be run through
-     *                     the type conversion of this type. This is usually not needed for
-     *                     strings and numeric types.
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @param string|integer $key 参数的位置或者名字。
+     * @param mixed $value 参数的值。
+     * @param string $type 参数的类型. 如果指定了, 此类型给出的值将通过类型转换。 
+     *                      如果是字符串型或者数字型通常不需要转换。
+     * @return \Doctrine\ORM\AbstractQuery 这个查询的实例。
      */
     public function setParameter($key, $value, $type = null)
     {
@@ -225,7 +223,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Process an individual parameter value
+     * 处理一个私有参数值
      *
      * @param mixed $value
      * @return array
