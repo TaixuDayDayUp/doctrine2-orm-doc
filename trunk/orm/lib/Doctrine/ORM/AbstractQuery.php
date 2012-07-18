@@ -40,7 +40,7 @@ abstract class AbstractQuery
 {
     /* 混合模式常数 */
     /**
-     * 混合一个对象映射，这是默认的行为。
+     * 混合一个对象映射，这是默认的表现。
      */
     const HYDRATE_OBJECT = 1;
     /**
@@ -270,11 +270,11 @@ abstract class AbstractQuery
     }
 
     /**
-     * Sets a collection of query parameters.
+     * 设置一个查询参数的集合。
      *
      * @param array $params
      * @param array $types
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @return \Doctrine\ORM\AbstractQuery 这个查询的实例。
      */
     public function setParameters(array $params, array $types = array())
     {
@@ -286,7 +286,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Sets the ResultSetMapping that should be used for hydration.
+     * 设置应该用于混合的结果集映射。
      *
      * @param ResultSetMapping $rsm
      * @return \Doctrine\ORM\AbstractQuery
@@ -299,15 +299,13 @@ abstract class AbstractQuery
     }
 
     /**
-     * Set a cache profile for hydration caching.
+     * 给混合缓存设置一个缓存档案。
      *
-     * If no result cache driver is set in the QueryCacheProfile, the default
-     * result cache driver is used from the configuration.
+     * 如果在QueryCacheProfile中没有设置结果缓存驱动，这个配置默认的结果缓存驱动将被使用。
      *
-     * Important: Hydration caching does NOT register entities in the
-     * UnitOfWork when retrieved from the cache. Never use result cached
-     * entities for requests that also flush the EntityManager. If you want
-     * some form of caching with UnitOfWork registration you should use
+     * 重点: 混合缓存不是从缓存中获取的工作单元的注册实体。
+     * 不要使用结果缓存实体去请求，这样会刷新实体管理器。如果你想用一些缓存工作单元注册的表单，
+     * 你应该使用
      * {@see AbstractQuery::setResultCacheProfile()}.
      *
      * @example
@@ -340,10 +338,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Set a cache profile for the result cache.
+     * 给结果缓存设置一个缓存档案
      *
-     * If no result cache driver is set in the QueryCacheProfile, the default
-     * result cache driver is used from the configuration.
+     * 如果在QueryCacheProfile里没有设置结果缓存驱动，配置中默认的
+     * 结果缓存驱动将被使用。
      *
      * @param \Doctrine\DBAL\Cache\QueryCacheProfile $profile
      * @return \Doctrine\ORM\AbstractQuery
@@ -361,7 +359,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Defines a cache driver to be used for caching result sets and implictly enables caching.
+     * 定义一个缓存驱动用于缓存结果集或者隐式启动缓存
      *
      * @param \Doctrine\Common\Cache\Cache $driver Cache driver
      * @return \Doctrine\ORM\AbstractQuery
@@ -380,7 +378,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Returns the cache driver used for caching result sets.
+     * 返回一个缓存驱动给缓存结果集
      *
      * @deprecated
      * @return \Doctrine\Common\Cache\Cache Cache driver
@@ -395,13 +393,12 @@ abstract class AbstractQuery
     }
 
     /**
-     * Set whether or not to cache the results of this query and if so, for
-     * how long and which ID to use for the cache entry.
+     * 设置是否缓存这个查询的结果，如果是，缓存时长和用于缓存条目的ID。
      *
      * @param boolean $bool
      * @param integer $lifetime
      * @param string $resultCacheId
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @return \Doctrine\ORM\AbstractQuery 这个查询的实例。
      */
     public function useResultCache($bool, $lifetime = null, $resultCacheId = null)
     {
@@ -418,10 +415,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Defines how long the result cache will be active before expire.
+     * 定义结果缓存在过期前活动的时长。
      *
-     * @param integer $lifetime How long the cache entry is valid.
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @param integer $lifetime 缓存条目有效的时长。
+     * @return \Doctrine\ORM\AbstractQuery 本次查询的实例。
      */
     public function setResultCacheLifetime($lifetime)
     {
@@ -435,7 +432,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Retrieves the lifetime of resultset cache.
+     * 获取结果集缓存的生存时间。
      *
      * @deprecated
      * @return integer
@@ -446,10 +443,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Defines if the result cache is active or not.
+     * 定义结果缓存是否激活。
      *
-     * @param boolean $expire Whether or not to force resultset cache expiration.
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @param boolean $expire 是否强迫结果集缓存过期。
+     * @return \Doctrine\ORM\AbstractQuery 本次查询的实例。
      */
     public function expireResultCache($expire = true)
     {
@@ -459,7 +456,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Retrieves if the resultset cache is active or not.
+     * 获得结果集缓存是否激活的状态。
      *
      * @return boolean
      */
