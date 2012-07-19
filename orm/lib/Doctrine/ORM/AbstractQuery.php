@@ -474,9 +474,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Change the default fetch mode of an association for this query.
+     * 转变关联到此查询的默认的抓取模式
      *
-     * $fetchMode can be one of ClassMetadata::FETCH_EAGER or ClassMetadata::FETCH_LAZY
+     * $fetchMode 是 ClassMetadata::FETCH_EAGER 或 ClassMetadata::FETCH_LAZY 其中之一
      *
      * @param  string $class
      * @param  string $assocName
@@ -495,11 +495,11 @@ abstract class AbstractQuery
     }
 
     /**
-     * Defines the processing mode to be used during hydration / result set transformation.
+     * 定义用于混合/结果集转换期间的加工模式
      *
-     * @param integer $hydrationMode Doctrine processing mode to be used during hydration process.
-     *                               One of the Query::HYDRATE_* constants.
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @param integer $hydrationMode Doctrine 加工模式被用于混合加工期间.
+     *                               是Query::HYDRATE_* constants之一。
+     * @return \Doctrine\ORM\AbstractQuery 此次查询的实例。
      */
     public function setHydrationMode($hydrationMode)
     {
@@ -509,7 +509,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the hydration mode currently used by the query.
+     * 获取此查询当前使用的混合模式。
      *
      * @return integer
      */
@@ -519,9 +519,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the list of results for the query.
+     * 获取此查询的结果列表。
      *
-     * Alias for execute(array(), $hydrationMode = HYDRATE_OBJECT).
+     * execute(array(), $hydrationMode = HYDRATE_OBJECT)的别名.
      *
      * @return array
      */
@@ -531,9 +531,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the array of results for the query.
+     * .获取此查询的结果的数组。
      *
-     * Alias for execute(array(), HYDRATE_ARRAY).
+     * execute(array(), HYDRATE_ARRAY)的别名。
      *
      * @return array
      */
@@ -543,9 +543,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the scalar results for the query.
+     * 获取此查询的标量结果。
      *
-     * Alias for execute(array(), HYDRATE_SCALAR).
+     * execute(array(), HYDRATE_SCALAR)的别名。
      *
      * @return array
      */
@@ -555,9 +555,9 @@ abstract class AbstractQuery
     }
 
     /**
-     * Get exactly one result or null.
+     * 获取1个结果或者空。
      *
-     * @throws NonUniqueResultException
+     * @throws NonUniqueResultException 无唯一结果的异常
      * @param int $hydrationMode
      * @return mixed
      */
@@ -581,17 +581,17 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the single result of the query.
+     * 获取此查询的单一结果。
      *
-     * Enforces the presence as well as the uniqueness of the result.
+     * 强迫有且只有一个结果。
      *
-     * If the result is not unique, a NonUniqueResultException is thrown.
-     * If there is no result, a NoResultException is thrown.
+     * 如果结果不是唯一, 一个 NonUniqueResultException异常被抛出.
+     * 如果没有结果, 一个NoResultException被抛出.
      *
      * @param integer $hydrationMode
      * @return mixed
-     * @throws NonUniqueResultException If the query result is not unique.
-     * @throws NoResultException If the query returned no result.
+     * @throws NonUniqueResultException  如果结果不是唯一。
+     * @throws NoResultException 如果查询没有结果。
      */
     public function getSingleResult($hydrationMode = null)
     {
@@ -613,12 +613,12 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the single scalar result of the query.
+     * 获取此查询单一的标量结果。
      *
-     * Alias for getSingleResult(HYDRATE_SINGLE_SCALAR).
+     * getSingleResult(HYDRATE_SINGLE_SCALAR)的别名。
      *
      * @return mixed
-     * @throws QueryException If the query result is not unique.
+     * @throws QueryException 如果查询结果不是唯一。
      */
     public function getSingleScalarResult()
     {
@@ -626,7 +626,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Sets a query hint. If the hint name is not recognized, it is silently ignored.
+     * 设置一个查询提示。 如果提示名没有被识别，它将被无提示忽略。
      *
      * @param string $name The name of the hint.
      * @param mixed $value The value of the hint.
@@ -640,10 +640,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Gets the value of a query hint. If the hint name is not recognized, FALSE is returned.
+     * 获取一个查询提示的值，如果这个提示名没有被识别，返回一个FALSE。
      *
-     * @param string $name The name of the hint.
-     * @return mixed The value of the hint or FALSE, if the hint name is not recognized.
+     * @param string $name 提示的名称
+     * @return mixed 提示的值或者提示名不被识别的时候返回FALSE.
      */
     public function getHint($name)
     {
@@ -651,7 +651,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Return the key value map of query hints that are currently set.
+     * 返回当前设置的查询提示的键值的映射。
      *
      * @return array
      */
@@ -661,11 +661,11 @@ abstract class AbstractQuery
     }
 
     /**
-     * Executes the query and returns an IterableResult that can be used to incrementally
-     * iterate over the result.
+     * 执行查询并返回一个 能用于结果增量迭代的
+     * 迭代结果。 
      *
-     * @param array $params The query parameters.
-     * @param integer $hydrationMode The hydration mode to use.
+     * @param array $params 查询参数。
+     * @param integer $hydrationMode 使用的混合模式。
      * @return \Doctrine\ORM\Internal\Hydration\IterableResult
      */
     public function iterate(array $params = array(), $hydrationMode = null)
@@ -686,10 +686,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Executes the query.
+     * 查询的执行.
      *
-     * @param array $params Any additional query parameters.
-     * @param integer $hydrationMode Processing mode to be used during the hydration process.
+     * @param array $params 一些附加的查询参数。
+     * @param integer $hydrationMode 混合加工期间使用的加工模式。
      * @return mixed
      */
     public function execute($params = array(), $hydrationMode = null)
@@ -743,9 +743,8 @@ abstract class AbstractQuery
     }
 
     /**
-     * Get the result cache id to use to store the result set cache entry.
-     * Will return the configured id if it exists otherwise a hash will be
-     * automatically generated for you.
+     * 获取用于储存结果集缓存条目的结果缓存id。
+     * 如果它存在将返回设置的id否则将自动为你生成一个哈希。
      *
      * @return array ($key, $hash)
      */
@@ -767,12 +766,11 @@ abstract class AbstractQuery
     }
 
     /**
-     * Set the result cache id to use to store the result set cache entry.
-     * If this is not explicitely set by the developer then a hash is automatically
-     * generated for you.
+     * 设置用于储存结果集缓存条目的结果缓存id。
+     * 如果没有被开发者明确指明，则自动为你生成一个哈希。
      *
      * @param string $id
-     * @return \Doctrine\ORM\AbstractQuery This query instance.
+     * @return \Doctrine\ORM\AbstractQuery 此次查询的实例。
      */
     public function setResultCacheId($id)
     {
@@ -784,7 +782,7 @@ abstract class AbstractQuery
     }
 
     /**
-     * Get the result cache id to use to store the result set cache entry if set.
+     * 如果储存结果集缓存条目被设置，获取结果缓存id。
      *
      * @deprecated
      * @return string
@@ -795,16 +793,16 @@ abstract class AbstractQuery
     }
 
     /**
-     * Executes the query and returns a the resulting Statement object.
+     * 执行此查询并返回一个结果陈述对象。
      *
-     * @return \Doctrine\DBAL\Driver\Statement The executed database statement that holds the results.
+     * @return \Doctrine\DBAL\Driver\Statement 围绕结果的执行数据库陈述。
      */
     abstract protected function _doExecute();
 
     /**
-     * Cleanup Query resource when clone is called.
+     * 当clone被调用时，清楚查询资源。
      *
-     * @return void
+     * @return void 空
      */
     public function __clone()
     {
